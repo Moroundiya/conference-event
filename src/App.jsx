@@ -6,9 +6,9 @@ import logo from "./assets/images/logo-full.svg";
 
 function App() {
 	return (
-		<div className="w-full h-full bg-desktop-bg bg-cover bg-no-repeat bg-center relative">
+		<div className="w-full h-auto bg-desktop-bg bg-cover bg-no-repeat bg-center relative">
 			<div
-				className="w-full h-full bg-center bg-cover bg-no-repeat relative py-12 flex items-center flex-col"
+				className="w-full h-[1500px] bg-center bg-cover bg-no-repeat relative py-12 flex items-center flex-col"
 				style={{ backgroundImage: `url(${patternLines})` }}>
 				<img
 					src={lineBottom}
@@ -44,8 +44,8 @@ function App() {
 								className="text-xl text-white">
 								Upload Avatar
 							</label>
-							<div className="w-full h-[100px] rounded-xl bg-green-600 mt-5"></div>
-							<input type="file" />
+							<div className="w-full h-[150px] rounded-xl mt-3 border-2 border-dashed border-[#757199] bg-[#1b163ecb] backdrop-blur-mds"></div>
+							{/* <input type="file" /> */}
 						</div>
 					</form>
 				</>
