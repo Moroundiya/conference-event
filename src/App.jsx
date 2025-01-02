@@ -36,7 +36,7 @@ function App() {
 					<img
 						src={logo}
 						alt=""
-						className="w-[180px]"
+						className="w-[180px] lg:auto"
 					/>
 
 					<p className="pt-10 lg:pt-20 text-[1.52rem] lg:text-6xl text-white capitalize flex flex-col items-center font-bold ">
@@ -44,7 +44,7 @@ function App() {
 						<span>2025 Starts Here!</span>
 					</p>
 					<p className="text-[#757199] text-center text-lg lg:text-2xl mt-5">
-						Secure your spot at next year's biggest coding conference.
+						Secure your spot at next year&apos;s biggest coding conference.
 					</p>
 
 					<form
