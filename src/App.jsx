@@ -11,8 +11,9 @@ function App() {
 	return (
 		<div className="w-full h-auto bg-desktop-bg bg-cover bg-no-repeat bg-center relative">
 			<div
-				className="w-full h-[1500px] bg-center bg-cover bg-no-repeat relative py-12 flex items-center flex-col"
+				className="w-full h-auto bg-center bg-cover bg-no-repeat relative py-12 flex items-center flex-col"
 				style={{ backgroundImage: `url(${patternLines})` }}>
+				<p className="text-white absolute bottom-4 opacity-25 ">Designed by Moroundiya 😎</p>
 				<img
 					src={lineBottom}
 					alt=""
@@ -45,20 +46,20 @@ function App() {
 
 					<form
 						action=""
-						className="w-2/6 my-14">
+						className="w-2/6 my-14 space-y-5">
 						<div>
 							<label
 								htmlFor="avatar"
 								className="text-xl text-white">
 								Upload Avatar
 							</label>
-							<div className="w-full py-8 relative rounded-xl mt-3 border-2 border-dashed border-[#757199] bg-[#1b163ecb] flex flex-col justify-center items-center">
+							<div className="w-full py-8 relative rounded-xl mt-2 border-2 border-dashed cursor-pointer border-[#757199] bg-[#1b163e8e] flex flex-col justify-center items-center">
 								<input
 									type="file"
-									className="w-full h-full absolute top-0 left-0 z-10 opacity-0"
+									className="w-full h-full absolute top-0 left-0 z-10 opacity-0 cursor-pointer"
 								/>
 
-								<div className="bg-[#332E50] rounded-lg border border-[#7571999c] p-2 cursor-pointer">
+								<div className="bg-[#332E50] rounded-lg border border-[#7571999c] p-2">
 									<img
 										src={uploadIcon}
 										alt=""
@@ -78,7 +79,49 @@ function App() {
 							</p>
 						</div>
 
-						<div></div>
+						<div>
+							<label
+								htmlFor="name"
+								className="text-xl text-white">
+								Full Name
+							</label>
+							<input
+								type="text"
+								placeholder="Adewunmi Quadri"
+								className="w-full py-2.5 px-2 text-white outline-none rounded-lg mt-2 border border-double border-[#757199] bg-[#1b163e8e]"
+							/>
+						</div>
+						<div>
+							<label
+								htmlFor="email"
+								className="text-xl text-white">
+								Email Address
+							</label>
+							<input
+								type="email"
+								placeholder="example@email.com"
+								className="w-full py-2.5 px-2 text-white outline-none rounded-lg mt-2 border border-double border-[#757199] bg-[#1b163e8e]"
+							/>
+						</div>
+						<div>
+							<label
+								htmlFor="github"
+								className="text-xl text-white">
+								Github Username
+							</label>
+							<input
+								type="text"
+								placeholder="@yourusername"
+								className="w-full py-2.5 px-2 text-white outline-none rounded-lg my-2 border border-double border-[#757199] bg-[#1b163e8e] flex flex-col justify-center items-center"
+							/>
+						</div>
+
+						<button
+							type="email"
+							placeholder="example@email.com"
+							className="w-full py-3 px-2 text-[#04011B] capitalize outline-none rounded-lg text-lg font-bold border-double bg-[#F67464]">
+							Generate my ticket{" "}
+						</button>
 					</form>
 				</>
 			</div>
