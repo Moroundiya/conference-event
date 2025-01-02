@@ -11,49 +11,52 @@ function App() {
 	return (
 		<div className="w-full h-auto bg-desktop-bg bg-cover bg-no-repeat bg-center relative">
 			<div
-				className="w-full h-auto bg-center bg-cover bg-no-repeat relative py-12 flex items-center flex-col"
+				className="w-full h-auto px-4 bg-center bg-cover bg-no-repeat relative py-12 flex items-center flex-col"
 				style={{ backgroundImage: `url(${patternLines})` }}>
-				<p className="text-white absolute bottom-4 opacity-25 ">Designed by Moroundiya 😎</p>
+				<p className="text-white absolute bottom-4 opacity-25 ">
+					Designed by Moroundiya 😎
+				</p>
 				<img
 					src={lineBottom}
 					alt=""
-					className="pointer-events-none absolute bottom-0 left-0"
+					className="pointer-events-none absolute bottom-0 left-0 w-40 lg:w-auto"
 				/>
 				<img
 					src={lineTop}
 					alt=""
-					className="pointer-events-none absolute top-10 right-0"
+					className="pointer-events-none absolute top-10 right-0 w-40 lg:w-auto"
 				/>
 				<img
 					src={patternCircle}
 					alt=""
-					className="pointer-events-none absolute right-[18%] top-[55%]"
+					className="pointer-events-none absolute lg:right-[18%] top-[55%] w-40 lg:w-auto"
 				/>
 
 				<>
 					<img
 						src={logo}
 						alt=""
+						className="w-[180px]"
 					/>
 
-					<p className="pt-20 text-6xl text-white capitalize flex flex-col items-center font-bold ">
+					<p className="pt-10 lg:pt-20 text-[1.52rem] lg:text-6xl text-white capitalize flex flex-col items-center font-bold ">
 						<span>Your Journey to Coding Conf </span>{" "}
 						<span>2025 Starts Here!</span>
 					</p>
-					<p className="text-white text-2xl mt-5">
+					<p className="text-[#757199] text-center text-lg lg:text-2xl mt-5">
 						Secure your spot at next year's biggest coding conference.
 					</p>
 
 					<form
 						action=""
-						className="w-2/6 my-14 space-y-5">
+						className="w-full lg:w-2/6 my-14 space-y-7 lg:space-y-5">
 						<div>
 							<label
 								htmlFor="avatar"
-								className="text-xl text-white">
+								className="text-lg lg:text-xl text-white">
 								Upload Avatar
 							</label>
-							<div className="w-full py-8 relative rounded-xl mt-2 border-2 border-dashed cursor-pointer border-[#757199] bg-[#1b163e8e] flex flex-col justify-center items-center">
+							<div className="w-full py-8 relative rounded-xl mt-3 lg:mt-2 border-2 border-dashed cursor-pointer border-[#757199] bg-[#1b163e8e] flex flex-col justify-center items-center">
 								<input
 									type="file"
 									className="w-full h-full absolute top-0 left-0 z-10 opacity-0 cursor-pointer"
@@ -63,14 +66,14 @@ function App() {
 									<img
 										src={uploadIcon}
 										alt=""
-										className="w-8"
+										className="lg:w-8"
 									/>
 								</div>
-								<p className="text-lg text-[#757199] mt-3">
+								<p className="text-sm lg:text-lg text-[#757199] mt-3">
 									Drag and drop or click to upload
 								</p>
 							</div>
-							<p className="text-[#757199] text-sm mt-2 flex items-center space-x-1">
+							<p className="text-[#757199] text-[13px] lg:text-sm mt-2 flex items-center space-x-1">
 								<img
 									src={infoIcon}
 									alt=""
@@ -82,7 +85,7 @@ function App() {
 						<div>
 							<label
 								htmlFor="name"
-								className="text-xl text-white">
+								className="text-lg lg:text-xl text-white">
 								Full Name
 							</label>
 							<input
@@ -94,7 +97,7 @@ function App() {
 						<div>
 							<label
 								htmlFor="email"
-								className="text-xl text-white">
+								className="text-lg lg:text-xl text-white">
 								Email Address
 							</label>
 							<input
@@ -106,7 +109,7 @@ function App() {
 						<div>
 							<label
 								htmlFor="github"
-								className="text-xl text-white">
+								className="text-lg lg:text-xl text-white">
 								Github Username
 							</label>
 							<input
