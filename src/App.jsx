@@ -1,9 +1,11 @@
 import "./App.css";
 import patternLines from "./assets/images/pattern-lines.svg";
 import lineTop from "./assets/images/pattern-squiggly-line-top.svg";
+import patternCircle from "./assets/images/pattern-circle.svg";
 import lineBottom from "./assets/images/pattern-squiggly-line-bottom.svg";
 import logo from "./assets/images/logo-full.svg";
 import uploadIcon from "./assets/images/icon-upload.svg";
+import infoIcon from "./assets/images/icon-info.svg";
 
 function App() {
 	return (
@@ -20,6 +22,11 @@ function App() {
 					src={lineTop}
 					alt=""
 					className="pointer-events-none absolute top-10 right-0"
+				/>
+				<img
+					src={patternCircle}
+					alt=""
+					className="pointer-events-none absolute right-[18%] top-[55%]"
 				/>
 
 				<>
@@ -46,7 +53,10 @@ function App() {
 								Upload Avatar
 							</label>
 							<div className="w-full py-8 relative rounded-xl mt-3 border-2 border-dashed border-[#757199] bg-[#1b163ecb] flex flex-col justify-center items-center">
-								<input type="file" className="w-full h-full absolute top-0 left-0 z-10 opacity-0" />
+								<input
+									type="file"
+									className="w-full h-full absolute top-0 left-0 z-10 opacity-0"
+								/>
 
 								<div className="bg-[#332E50] rounded-lg border border-[#7571999c] p-2 cursor-pointer">
 									<img
@@ -55,11 +65,20 @@ function App() {
 										className="w-8"
 									/>
 								</div>
-								<p className="text-lg text-white mt-3">
+								<p className="text-lg text-[#757199] mt-3">
 									Drag and drop or click to upload
 								</p>
 							</div>
+							<p className="text-[#757199] text-sm mt-2 flex items-center space-x-1">
+								<img
+									src={infoIcon}
+									alt=""
+								/>
+								<span>Upload your photo (JPG or PNG, max size: 500KB).</span>
+							</p>
 						</div>
+
+						<div></div>
 					</form>
 				</>
 			</div>
