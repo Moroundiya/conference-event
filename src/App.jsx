@@ -49,7 +49,7 @@ function App() {
 
 					<form
 						action=""
-						className="w-full lg:w-2/6 my-14 space-y-7 lg:space-y-5">
+						className="w-full md:w-3/5 xl:w-2/6 my-14 space-y-7 lg:space-y-5">
 						<div>
 							<label
 								htmlFor="avatar"
