@@ -9,7 +9,7 @@ import { Form } from "./assets/components/Form";
 import { Ticket } from "./assets/components/Ticket";
 
 function App() {
-	const [submit, setSubmit] = useState(false);
+	const [submit, setSubmit] = useState(true);
 
 	useEffect(() => {}, [submit]);
 
@@ -44,10 +44,23 @@ function App() {
 						className="w-[180px] lg:auto"
 					/>
 
-					<p className="pt-10 lg:pt-20 text-[1.52rem] lg:text-6xl text-white capitalize flex flex-col items-center font-bold ">
-						<span>Your Journey to Coding Conf </span>{" "}
-						<span>2025 Starts Here!</span>
-					</p>
+					{submit ? (
+						<p className="pt-10 lg:pt-20 text-[1.52rem] lg:text-6xl text-white capitalize flex flex-col items-center font-bold ">
+							<span>
+								Congrats,{" "}
+								<span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+									Adewunmi Quadri{" "}
+								</span>
+							</span>{" "}
+							<span> Your ticket is ready!</span>
+						</p>
+					) : (
+						<p className="pt-10 lg:pt-20 text-[1.52rem] lg:text-6xl text-white capitalize flex flex-col items-center font-bold ">
+							<span>Your Journey to Coding Conf </span>{" "}
+							<span>2025 Starts Here!</span>
+						</p>
+					)}
+
 					<p className="text-[#757199] text-center text-lg lg:text-2xl mt-5">
 						Secure your spot at next year&apos;s biggest coding conference.
 					</p>
