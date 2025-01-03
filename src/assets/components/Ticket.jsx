@@ -1,4 +1,4 @@
-import ticketBox from "../images/pattern-ticket.svg";
+import ticketBox from "../images/pattern-ticket.png";
 import logo from "../images/logo-full.svg";
 import avatar from "../images/image-avatar.jpg";
 import github from "../images/icon-github.svg";
@@ -7,12 +7,17 @@ export const Ticket = ({ setSubmit }) => {
 	return (
 		<>
 			<div className="w-full md:w-3/5 xl:w-2/6 my-14 space-y-7 lg:space-y-5">
-				<div className="w-full h-[185px] lg:h-[230px] relative flex items-center px-5 mb-5 lg:mb-10">
+				<div
+					className="w-full h-[185px] lg:h-[230px] relative flex items-center px-5 mb-5 lg:mb-10"
+					>
 					<img
 						src={ticketBox}
 						className="absolute top-0 left-0 h-full w-full"
 						alt=""
 					/>
+					<p className="font-bold text-[#757199] rotate-90 text-lg absolute -right-3 lg:right-0">
+						#MOROUNDIYA
+					</p>
 
 					<div className="relative top-0 left-0 z-10 space-y-7">
 						<div className="">
