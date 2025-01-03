@@ -19,9 +19,9 @@ export const Ticket = ({ setSubmit }) => {
 							<img
 								src={logo}
 								alt=""
-								className="w-[180px] lg:auto"
+								className="w-[160px] lg:w-[180px]"
 							/>
-							<p className="text-[#757199] font-bold text-sm lg:text-lg ms-10">
+							<p className="text-[#757199] font-bold text-sm lg:text-lg ms-[37px]">
 								Jan 31, 2025 / Austin, TX
 							</p>
 						</div>
@@ -32,7 +32,9 @@ export const Ticket = ({ setSubmit }) => {
 								className="w-11 lg:w-14 rounded-lg"
 							/>
 							<div className="">
-								<p className="text-white text-xl lg:text-2xl font-bold ">Quadri Ayodele</p>
+								<p className="text-white text-xl lg:text-2xl font-bold ">
+									Quadri Ayodele
+								</p>
 								<p className="flex items-center">
 									<img
 										src={github}
