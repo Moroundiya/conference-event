@@ -14,9 +14,14 @@ function App() {
 	useEffect(() => {}, [submit]);
 
 	return (
-		<div className="w-full h-auto bg-desktop-bg bg-cover bg-no-repeat bg-center relative">
+		<div
+			className={`w-full ${
+				submit ? "h-full" : "h-auto"
+			} bg-desktop-bg bg-cover bg-no-repeat bg-center relative`}>
 			<div
-				className="w-full h-auto px-4 bg-center bg-cover bg-no-repeat relative py-12 flex items-center flex-col"
+				className={`w-full ${
+					submit ? "h-full" : "h-auto"
+				} px-4 bg-center bg-cover bg-no-repeat relative py-12 flex items-center flex-col`}
 				style={{ backgroundImage: `url(${patternLines})` }}>
 				<p className="text-white absolute bottom-4 opacity-25 ">
 					Designed by Moroundiya 😎
@@ -45,30 +50,32 @@ function App() {
 					/>
 
 					{submit ? (
-						<p className="pt-10 lg:pt-20 text-[1.52rem] lg:text-6xl text-white capitalize flex flex-col items-center font-bold ">
-							<span>
-								Congrats,{" "}
-								<span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
-									Adewunmi Quadri{" "}
-								</span>
-							</span>{" "}
-							<span> Your ticket is ready!</span>
-						</p>
+						<>
+							<p className="pt-10 lg:pt-20 text-[1.52rem] lg:text-6xl text-white capitalize flex flex-col items-center font-bold ">
+								<span>
+									Congrats,{" "}
+									<span className="gradient-text">Adewunmi Quadri </span>
+								</span>{" "}
+								<span> Your ticket is ready!</span>
+							</p>
+							<p className="text-[#757199] text-center text-lg lg:text-2xl mt-5 lg:w-2/4">
+								We've emailed your ticket to{" "}
+								<span className="gradient-text">Quadridiya@gmail.com </span>
+								and will send updates in the run up to the event.
+							</p>
+							<Ticket setSubmit={setSubmit} />
+						</>
 					) : (
-						<p className="pt-10 lg:pt-20 text-[1.52rem] lg:text-6xl text-white capitalize flex flex-col items-center font-bold ">
-							<span>Your Journey to Coding Conf </span>{" "}
-							<span>2025 Starts Here!</span>
-						</p>
-					)}
-
-					<p className="text-[#757199] text-center text-lg lg:text-2xl mt-5">
-						Secure your spot at next year&apos;s biggest coding conference.
-					</p>
-
-					{submit ? (
-						<Ticket setSubmit={setSubmit} />
-					) : (
-						<Form setSubmit={setSubmit} />
+						<>
+							<p className="pt-10 lg:pt-20 text-[1.52rem] lg:text-6xl text-white capitalize flex flex-col items-center font-bold ">
+								<span>Your Journey to Coding Conf </span>{" "}
+								<span>2025 Starts Here!</span>
+							</p>
+							<p className="text-[#757199] text-center text-lg lg:text-2xl mt-5">
+								Secure your spot at next year&apos;s biggest coding conference.
+							</p>
+							<Form setSubmit={setSubmit} />
+						</>
 					)}
 				</>
 			</div>

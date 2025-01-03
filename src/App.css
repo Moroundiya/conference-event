@@ -1,6 +1,18 @@
 div#root,
-html, body {
+html,
+body {
 	width: 100%;
 	height: 100%;
 	font-family: "Inconsolata", serif;
+}
+
+.gradient-text {
+	background-color: hsl(7, 86%, 67%);
+	background-image: linear-gradient(45deg, hsl(7, 86%, 67%), hsl(0, 0%, 100%));
+	background-size: 100%;
+	background-repeat: repeat;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	-moz-background-clip: text;
+	-moz-text-fill-color: transparent;
 }
