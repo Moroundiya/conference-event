@@ -5,7 +5,7 @@ import github from "../images/icon-github.svg";
 // eslint-disable-next-line react/prop-types
 export const Ticket = ({ setGenerateTicket, formInfo }) => {
 	// eslint-disable-next-line react/prop-types
-	console.log(formInfo.name);
+	// console.log(formInfo.name);
 	return (
 		<>
 			<div className="w-full md:w-3/5 xl:w-2/6 my-14 space-y-7 lg:space-y-5">
@@ -34,7 +34,7 @@ export const Ticket = ({ setGenerateTicket, formInfo }) => {
 							<img
 								src={formInfo.image}
 								alt=""
-								className="w-11 lg:w-14 rounded-lg"
+								className="w-12 h-12 lg:w-14 lg:h-14 rounded-lg"
 							/>
 							<div className="">
 								<p className="text-white text-xl lg:text-2xl font-bold ">

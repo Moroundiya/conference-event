@@ -10,21 +10,22 @@ export const FormSection = ({ setGenerateTicket, setFormInfo }) => {
 	const handleGenerateTicket = (e) => {
 		e.preventDefault();
 		let data = new FormData(e.target);
-		let img = URL.createObjectURL(data.get("image"));
+		if (data.get("image").size / 1024 > 500) {
+			alert("Image size must not exceed 500KB");
+			return;
+		}
 
 		setFormInfo({
-			image: img,
+			image: URL.createObjectURL(data.get("image")),
 			name: data.get("name"),
 			email: data.get("email"),
 			username: data.get("username"),
 		});
 
 		setGenerateTicket(true);
-		// console.log(img);
 	};
 
 	const [value, setValue] = useState("");
-
 	useEffect(() => {}, [value]);
 
 	return (
@@ -79,7 +80,7 @@ export const FormSection = ({ setGenerateTicket, setFormInfo }) => {
 					type="text"
 					placeholder="Adewunmi Quadri"
 					name="name"
-					className="w-full py-2.5 px-2 text-white outline-none rounded-lg mt-2 border border-double border-[#757199] bg-[#1b163e8e] focus:bg-[#1b163e8e]"
+					className="w-full py-2.5 px-2 text-white outline-none rounded-lg mt-2 border border-double border-[#757199] bg-[#1b163e8e] focus:bg-[#1b163e8e] focus-within:bg-[#1b163e8e]"
 					required
 				/>
 			</div>
@@ -93,7 +94,7 @@ export const FormSection = ({ setGenerateTicket, setFormInfo }) => {
 					type="email"
 					placeholder="example@email.com"
 					name="email"
-					className="w-full py-2.5 px-2 text-white outline-none rounded-lg mt-2 border border-double border-[#757199] bg-[#1b163e8e] focus:bg-[#1b163e8e]"
+					className="w-full py-2.5 px-2 text-white outline-none rounded-lg mt-2 border border-double border-[#757199] bg-[#1b163e8e] focus:bg-[#1b163e8e] focus-within:bg-[#1b163e8e]"
 					required
 				/>
 			</div>
@@ -107,7 +108,7 @@ export const FormSection = ({ setGenerateTicket, setFormInfo }) => {
 					type="text"
 					placeholder="@yourusername"
 					name="username"
-					className="w-full py-2.5 px-2 text-white outline-none rounded-lg my-2 border border-double border-[#757199] bg-[#1b163e8e] flex flex-col justify-center items-center focus:bg-[#1b163e8e]"
+					className="w-full py-2.5 px-2 text-white outline-none rounded-lg my-2 border border-double border-[#757199] bg-[#1b163e8e] flex flex-col justify-center items-center focus:bg-[#1b163e8e] focus-within:bg-[#1b163e8e]"
 					required
 				/>
 			</div>
