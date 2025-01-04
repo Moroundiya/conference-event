@@ -60,7 +60,7 @@ function App() {
 								<span> Your ticket is ready!</span>
 							</p>
 							<p className="text-[#757199] text-center text-lg lg:text-2xl mt-5 lg:w-2/4">
-								We've emailed your ticket to{" "}
+								We&apos;ve emailed your ticket to{" "}
 								<span className="gradient-text">Quadridiya@gmail.com </span>
 								and will send updates in the run up to the event.
 							</p>

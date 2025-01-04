@@ -10,36 +10,28 @@ export const FormSection = ({ setGenerateTicket }) => {
 	const handleGenerateTicket = (e) => {
 		e.preventDefault();
 		// setGenerateTicket(true)
+		// let ticketDetails = Object.fromEntries(data.entries());
 
 		let data = new FormData(e.target);
-		let ticketDetails = Object.fromEntries(data.entries());
 		let img = URL.createObjectURL(data.get("image"));
-		setImg(img);
-		console.log(img);
+		// console.log(img);
 	};
 
-	const [img, setImg] = useState("");
 	const [value, setValue] = useState("");
 
-	useEffect(() => {}, [img, value]);
+	useEffect(() => {}, [value]);
 
 	return (
 		<form
 			onSubmit={handleGenerateTicket}
 			className="w-full md:w-3/5 xl:w-2/6 my-14 space-y-7 lg:space-y-5">
-			{/* <img
-				src={img}
-				accept="image/*"
-				alt=""
-				className="border-2 p-5 w-[100px] h-[100px]"
-			/> */}
 			<div>
 				<label
 					htmlFor="avatar"
 					className="text-lg lg:text-xl text-white">
 					Upload Avatar
 				</label>
-				<div className="w-full py-8 relative rounded-xl mt-3 lg:mt-2 border-2 border-dashed cursor-pointer border-[#757199] bg-[#1b163e8e] flex flex-col justify-center items-center">
+				<div className="w-full lg:h-[200px] py-8 relative rounded-xl mt-3 lg:mt-2 border-2 border-dashed cursor-pointer border-[#757199] bg-[#1b163e8e] flex flex-col justify-center items-center">
 					<input
 						type="file"
 						className="w-full h-full absolute top-0 left-0 z-10 opacity-0 cursor-pointer"
@@ -57,7 +49,9 @@ export const FormSection = ({ setGenerateTicket }) => {
 						/>
 					</div>
 					<p className="text-sm w-full px-4 text-center lg:w-3/4 h-auto overflow-hidden flex justify-center items-center lg:text-lg text-[#757199] mt-3">
-						<span className="w-full break-all break-words">{value ? `${value.toString()}` : "Drag and drop or click to upload"}</span>
+						<span className="w-full break-all break-words">
+							{value ? value : "Drag and drop or click to upload"}
+						</span>
 					</p>
 				</div>
 				<p className="text-[#757199] text-[13px] lg:text-sm mt-2 flex items-center space-x-1">
