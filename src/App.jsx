@@ -17,7 +17,9 @@ function App() {
 		email: "",
 		username: "",
 	});
-	useEffect(() => {}, [generateTicket, formInfo]);
+	useEffect(() => {
+		console.log(formInfo);
+	}, [generateTicket, formInfo]);
 
 	return (
 		<div className="w-full min-h-full bg-desktop-bg bg-cover bg-no-repeat bg-center relative">
@@ -55,16 +57,19 @@ function App() {
 							<p className="pt-10 lg:pt-20 text-[1.52rem] lg:text-6xl text-white capitalize flex flex-col items-center font-bold ">
 								<span>
 									Congrats,{" "}
-									<span className="gradient-text">Adewunmi Quadri </span>
-								</span>{" "}
+									<span className="gradient-text uppercase">{formInfo.name} </span>
+								</span>
 								<span> Your ticket is ready!</span>
 							</p>
 							<p className="text-[#757199] text-center text-lg lg:text-2xl mt-5 lg:w-2/4">
 								We&apos;ve emailed your ticket to{" "}
-								<span className="gradient-text">Quadridiya@gmail.com </span>
+								<span className="gradient-text lowercase">{ formInfo.email} </span>
 								and will send updates in the run up to the event.
 							</p>
-							<Ticket setGenerateTicket={setGenerateTicket} />
+							<Ticket
+								setGenerateTicket={setGenerateTicket}
+								formInfo={formInfo}
+							/>
 						</>
 					) : (
 						<>

@@ -6,14 +6,20 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 // eslint-disable-next-line react/prop-types
-export const FormSection = ({ setGenerateTicket }) => {
+export const FormSection = ({ setGenerateTicket, setFormInfo }) => {
 	const handleGenerateTicket = (e) => {
 		e.preventDefault();
-		// setGenerateTicket(true)
-		// let ticketDetails = Object.fromEntries(data.entries());
-
 		let data = new FormData(e.target);
 		let img = URL.createObjectURL(data.get("image"));
+
+		setFormInfo({
+			image: img,
+			name: data.get("name"),
+			email: data.get("email"),
+			username: data.get("username"),
+		});
+
+		setGenerateTicket(true);
 		// console.log(img);
 	};
 
@@ -73,7 +79,7 @@ export const FormSection = ({ setGenerateTicket }) => {
 					type="text"
 					placeholder="Adewunmi Quadri"
 					name="name"
-					className="w-full py-2.5 px-2 text-white outline-none rounded-lg mt-2 border border-double border-[#757199] bg-[#1b163e8e]"
+					className="w-full py-2.5 px-2 text-white outline-none rounded-lg mt-2 border border-double border-[#757199] bg-[#1b163e8e] focus:bg-[#1b163e8e]"
 					required
 				/>
 			</div>
@@ -87,21 +93,21 @@ export const FormSection = ({ setGenerateTicket }) => {
 					type="email"
 					placeholder="example@email.com"
 					name="email"
-					className="w-full py-2.5 px-2 text-white outline-none rounded-lg mt-2 border border-double border-[#757199] bg-[#1b163e8e]"
+					className="w-full py-2.5 px-2 text-white outline-none rounded-lg mt-2 border border-double border-[#757199] bg-[#1b163e8e] focus:bg-[#1b163e8e]"
 					required
 				/>
 			</div>
 			<div>
 				<label
-					htmlFor="github"
+					htmlFor="username"
 					className="text-lg lg:text-xl text-white">
 					Github Username
 				</label>
 				<input
 					type="text"
 					placeholder="@yourusername"
-					name="github"
-					className="w-full py-2.5 px-2 text-white outline-none rounded-lg my-2 border border-double border-[#757199] bg-[#1b163e8e] flex flex-col justify-center items-center"
+					name="username"
+					className="w-full py-2.5 px-2 text-white outline-none rounded-lg my-2 border border-double border-[#757199] bg-[#1b163e8e] flex flex-col justify-center items-center focus:bg-[#1b163e8e]"
 					required
 				/>
 			</div>
