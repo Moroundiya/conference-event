@@ -39,7 +39,7 @@ export const FormSection = ({ setGenerateTicket }) => {
 					className="text-lg lg:text-xl text-white">
 					Upload Avatar
 				</label>
-				<div className="w-full bg-red-400 py-8 relative rounded-xl mt-3 lg:mt-2 border-2 border-dashed cursor-pointer border-[#757199] bg-[#1b163e8e] flex flex-col justify-center items-center">
+				<div className="w-full py-8 relative rounded-xl mt-3 lg:mt-2 border-2 border-dashed cursor-pointer border-[#757199] bg-[#1b163e8e] flex flex-col justify-center items-center">
 					<input
 						type="file"
 						className="w-full h-full absolute top-0 left-0 z-10 opacity-0 cursor-pointer"
@@ -56,8 +56,8 @@ export const FormSection = ({ setGenerateTicket }) => {
 							className="lg:w-8"
 						/>
 					</div>
-					<p className="text-sm w-full px-4 bg-green-600 text-center lg:w-3/4 h-auto overflow-hidden flex justify-center items-center lg:text-lg text-[#757199] mt-3">
-						<span className="w-full">{value ? `${value.toString()}` : "Drag and drop or click to upload"}</span>
+					<p className="text-sm w-full px-4 text-center lg:w-3/4 h-auto overflow-hidden flex justify-center items-center lg:text-lg text-[#757199] mt-3">
+						<span className="w-full break-all break-words">{value ? `${value.toString()}` : "Drag and drop or click to upload"}</span>
 					</p>
 				</div>
 				<p className="text-[#757199] text-[13px] lg:text-sm mt-2 flex items-center space-x-1">
