@@ -10,9 +10,14 @@ import { FormSection } from "./assets/components/FormSection";
 import { Ticket } from "./assets/components/Ticket";
 
 function App() {
-
 	const [generateTicket, setGenerateTicket] = useState(false);
-	useEffect(() => {}, [generateTicket]);
+	const [formInfo, setFormInfo] = useState({
+		image: "",
+		name: "",
+		email: "",
+		username: "",
+	});
+	useEffect(() => {}, [generateTicket, formInfo]);
 
 	return (
 		<div className="w-full min-h-full bg-desktop-bg bg-cover bg-no-repeat bg-center relative">
@@ -70,7 +75,10 @@ function App() {
 							<p className="text-[#757199] text-center text-lg lg:text-2xl mt-5">
 								Secure your spot at next year&apos;s biggest coding conference.
 							</p>
-							<FormSection setGenerateTicket={setGenerateTicket} />
+							<FormSection
+								setGenerateTicket={setGenerateTicket}
+								setFormInfo={setFormInfo}
+							/>
 						</>
 					)}
 				</>
