@@ -2,6 +2,8 @@
 import uploadIcon from "../images/icon-upload.svg";
 import infoIcon from "../images/icon-info.svg";
 import { Form } from "react-router-dom";
+import { useState } from "react";
+import { useEffect } from "react";
 
 // eslint-disable-next-line react/prop-types
 export const FormSection = ({ setGenerateTicket }) => {
@@ -11,12 +13,26 @@ export const FormSection = ({ setGenerateTicket }) => {
 
 		let data = new FormData(e.target);
 		let ticketDetails = Object.fromEntries(data.entries());
-		console.log(ticketDetails);
+		let img = URL.createObjectURL(data.get("image"));
+		setImg(img);
+		console.log(img);
 	};
+
+	const [img, setImg] = useState("");
+	const [value, setValue] = useState("");
+
+	useEffect(() => {}, [img, value]);
+
 	return (
 		<form
 			onSubmit={handleGenerateTicket}
 			className="w-full md:w-3/5 xl:w-2/6 my-14 space-y-7 lg:space-y-5">
+			<img
+				src={img}
+				// accept="image/*"
+				alt=""
+				className="border-2 p-5 w-[100px] h-[100px]"
+			/>
 			<div>
 				<label
 					htmlFor="avatar"
@@ -28,6 +44,7 @@ export const FormSection = ({ setGenerateTicket }) => {
 						type="file"
 						className="w-full h-full absolute top-0 left-0 z-10 opacity-0 cursor-pointer"
 						name="image"
+						onChange={(e) => setValue(e.target.value)}
 						required
 					/>
 
@@ -39,7 +56,7 @@ export const FormSection = ({ setGenerateTicket }) => {
 						/>
 					</div>
 					<p className="text-sm lg:text-lg text-[#757199] mt-3">
-						Drag and drop or click to upload
+						{value ? value : "Drag and drop or click to upload"}
 					</p>
 				</div>
 				<p className="text-[#757199] text-[13px] lg:text-sm mt-2 flex items-center space-x-1">
