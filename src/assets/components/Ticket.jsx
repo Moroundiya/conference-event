@@ -3,13 +3,11 @@ import logo from "../images/logo-full.svg";
 import avatar from "../images/image-avatar.jpg";
 import github from "../images/icon-github.svg";
 // eslint-disable-next-line react/prop-types
-export const Ticket = ({ setSubmit }) => {
+export const Ticket = ({ setGenerateTicket }) => {
 	return (
 		<>
 			<div className="w-full md:w-3/5 xl:w-2/6 my-14 space-y-7 lg:space-y-5">
-				<div
-					className="w-full h-[185px] lg:h-[230px] relative flex items-center px-5 mb-5 lg:mb-10"
-					>
+				<div className="w-full h-[185px] lg:h-[230px] relative flex items-center px-5 mb-5 lg:mb-10">
 					<img
 						src={ticketBox}
 						className="absolute top-0 left-0 h-full w-full"
@@ -56,7 +54,7 @@ export const Ticket = ({ setSubmit }) => {
 				<button
 					type="email"
 					placeholder="example@email.com"
-					onClick={() => setSubmit(false)}
+					onClick={() => setGenerateTicket(false)}
 					className="w-full py-3 px-2 text-[#04011B] capitalize outline-none rounded-lg text-lg font-bold border-double bg-[#F67464]">
 					Book another ticket
 				</button>

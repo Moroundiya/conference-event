@@ -5,13 +5,14 @@ import patternCircle from "./assets/images/pattern-circle.svg";
 import lineBottom from "./assets/images/pattern-squiggly-line-bottom.svg";
 import logo from "./assets/images/logo-full.svg";
 import { useEffect, useState } from "react";
-import { Form } from "./assets/components/Form";
+// FormSection
+import { FormSection } from "./assets/components/FormSection";
 import { Ticket } from "./assets/components/Ticket";
 
 function App() {
-	const [submit, setSubmit] = useState(true);
 
-	useEffect(() => {}, [submit]);
+	const [generateTicket, setGenerateTicket] = useState(false);
+	useEffect(() => {}, [generateTicket]);
 
 	return (
 		<div className="w-full min-h-full bg-desktop-bg bg-cover bg-no-repeat bg-center relative">
@@ -44,7 +45,7 @@ function App() {
 						className="w-[180px] lg:auto"
 					/>
 
-					{submit ? (
+					{generateTicket ? (
 						<>
 							<p className="pt-10 lg:pt-20 text-[1.52rem] lg:text-6xl text-white capitalize flex flex-col items-center font-bold ">
 								<span>
@@ -58,7 +59,7 @@ function App() {
 								<span className="gradient-text">Quadridiya@gmail.com </span>
 								and will send updates in the run up to the event.
 							</p>
-							<Ticket setSubmit={setSubmit} />
+							<Ticket setGenerateTicket={setGenerateTicket} />
 						</>
 					) : (
 						<>
@@ -69,7 +70,7 @@ function App() {
 							<p className="text-[#757199] text-center text-lg lg:text-2xl mt-5">
 								Secure your spot at next year&apos;s biggest coding conference.
 							</p>
-							<Form setSubmit={setSubmit} />
+							<FormSection setGenerateTicket={setGenerateTicket} />
 						</>
 					)}
 				</>

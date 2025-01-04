@@ -1,11 +1,21 @@
+/* eslint-disable no-unused-vars */
 import uploadIcon from "../images/icon-upload.svg";
 import infoIcon from "../images/icon-info.svg";
+import { Form } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
-export const Form = ({ setSubmit }) => {
+export const FormSection = ({ setGenerateTicket }) => {
+	const handleGenerateTicket = (e) => {
+		e.preventDefault();
+		// setGenerateTicket(true)
+
+		let data = new FormData(e.target);
+		let ticketDetails = Object.fromEntries(data.entries());
+		console.log(ticketDetails);
+	};
 	return (
 		<form
-			onSubmit={() => setSubmit(true)}
+			onSubmit={handleGenerateTicket}
 			className="w-full md:w-3/5 xl:w-2/6 my-14 space-y-7 lg:space-y-5">
 			<div>
 				<label
@@ -16,8 +26,9 @@ export const Form = ({ setSubmit }) => {
 				<div className="w-full py-8 relative rounded-xl mt-3 lg:mt-2 border-2 border-dashed cursor-pointer border-[#757199] bg-[#1b163e8e] flex flex-col justify-center items-center">
 					<input
 						type="file"
-                        className="w-full h-full absolute top-0 left-0 z-10 opacity-0 cursor-pointer"
-                        required
+						className="w-full h-full absolute top-0 left-0 z-10 opacity-0 cursor-pointer"
+						name="image"
+						required
 					/>
 
 					<div className="bg-[#332E50] rounded-lg border border-[#7571999c] p-2">
@@ -49,8 +60,9 @@ export const Form = ({ setSubmit }) => {
 				<input
 					type="text"
 					placeholder="Adewunmi Quadri"
-                    className="w-full py-2.5 px-2 text-white outline-none rounded-lg mt-2 border border-double border-[#757199] bg-[#1b163e8e]"
-                    required
+					name="name"
+					className="w-full py-2.5 px-2 text-white outline-none rounded-lg mt-2 border border-double border-[#757199] bg-[#1b163e8e]"
+					required
 				/>
 			</div>
 			<div>
@@ -62,8 +74,9 @@ export const Form = ({ setSubmit }) => {
 				<input
 					type="email"
 					placeholder="example@email.com"
-                    className="w-full py-2.5 px-2 text-white outline-none rounded-lg mt-2 border border-double border-[#757199] bg-[#1b163e8e]"
-                    required
+					name="email"
+					className="w-full py-2.5 px-2 text-white outline-none rounded-lg mt-2 border border-double border-[#757199] bg-[#1b163e8e]"
+					required
 				/>
 			</div>
 			<div>
@@ -75,13 +88,14 @@ export const Form = ({ setSubmit }) => {
 				<input
 					type="text"
 					placeholder="@yourusername"
-                    className="w-full py-2.5 px-2 text-white outline-none rounded-lg my-2 border border-double border-[#757199] bg-[#1b163e8e] flex flex-col justify-center items-center"
-                    required
+					name="github"
+					className="w-full py-2.5 px-2 text-white outline-none rounded-lg my-2 border border-double border-[#757199] bg-[#1b163e8e] flex flex-col justify-center items-center"
+					required
 				/>
 			</div>
 
 			<button
-				type="email"
+				type="submit"
 				placeholder="example@email.com"
 				className="w-full py-3 px-2 text-[#04011B] capitalize outline-none rounded-lg text-lg font-bold border-double bg-[#F67464]">
 				Generate my ticket
@@ -89,3 +103,8 @@ export const Form = ({ setSubmit }) => {
 		</form>
 	);
 };
+
+// export const submitTicket = (request) => {
+// 	let data = request.FormData();
+// 	console.log(data);
+// };
