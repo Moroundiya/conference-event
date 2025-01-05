@@ -13,7 +13,7 @@ export const FormSection = ({ setGenerateTicket, setFormInfo }) => {
 		setDetails(data);
 		const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 		let emailInfo = data.get("email");
-		console.log(data.get("image"));
+		// console.log(data.get("image"));
 
 		// if (data) {
 		if (data.get("image").size / 1024 > 500 || data.get("image").name === "") {
@@ -89,10 +89,12 @@ export const FormSection = ({ setGenerateTicket, setFormInfo }) => {
 			// alert("Successful");
 			return;
 		} else {
-			alert("Successful");
+			setTimeout(() => {
+				alert("Successful");
+			}, 500);
 		}
 
-		console.log("details is " + details);
+		// console.log("details is " + details);
 	}, [value, email, img, name, username, details]);
 
 	return (
