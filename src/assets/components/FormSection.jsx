@@ -23,54 +23,61 @@ export const FormSection = ({
 		// if (data) {
 		if (data.get("image").size / 1024 > 500 || data.get("image").name === "") {
 			// alert("Image size must not exceed 500KB");
-			setImg(true);
+
+			setValidation({
+				...validation,
+				img: true,
+			});
+			// setImg(true);
 			// setEmail()
 			// return;
 		} else {
-			setImg(false);
+			// setImg(false);
+			setValidation({
+				...validation,
+				img: false,
+			});
 		}
 
 		if (!regex.test(emailInfo) || email === "") {
 			// console.log("Invalid Email");
-			setEmail(true);
+			// setEmail(true);
+			setValidation({
+				...validation,
+				email: true,
+			});
 			// return;
 		} else {
-			setEmail(false);
+			setValidation({
+				...validation,
+				email: false,
+			});
 		}
 
 		if (data.get("name") === "") {
-			setName(true);
+			setValidation({
+				...validation,
+				name: true,
+			});
 		} else {
-			setName(false);
+			setValidation({
+				...validation,
+				name: false,
+			});
 		}
 
 		if (data.get("username") === "") {
-			setUsername(true);
+			setValidation({
+				...validation,
+				username: true,
+			});
 		} else {
-			setUsername(false);
+			setValidation({
+				...validation,
+				username: false,
+			});
 		}
 
-		// return;
-
-		// console.log("CHeckForm is " + CheckForm());
-
-		// if (username || name || email || img) {
-		// 	alert("Incorrect");
-		// } else {
-		// 	alert("Correct");
-		// }
-		// console.log('Correct')
-
-		// if (!email && !img) {
-		// 	setFormInfo({
-		// 		image: URL.createObjectURL(data.get("image")),
-		// 		name: data.get("name"),
-		// 		email: data.get("email"),
-		// 		username: data.get("username"),
-		// 	});
-		// } else {
-		// 	return;
-		// }
 	};
 
 	const [validation, setValidation] = useState({
@@ -79,6 +86,7 @@ export const FormSection = ({
 		username: false,
 		details: "",
 		submit: false,
+		email: false,
 	});
 
 	const [value, setValue] = useState("");
@@ -92,7 +100,7 @@ export const FormSection = ({
 		// console.log("name is " + name);
 		// console.log("email is " + email);
 		// console.log("username is " + username);
-		console.log("submit is " + submit);
+		console.dir(validation);
 
 		const CheckForm = () => {
 			return username || email || img || name;
@@ -118,7 +126,17 @@ export const FormSection = ({
 		}
 
 		// console.log("details is " + details);
-	}, [value, email, img, name, username, details, submit, generateTicket, validation]);
+	}, [
+		value,
+		email,
+		img,
+		name,
+		username,
+		details,
+		submit,
+		generateTicket,
+		validation,
+	]);
 
 	return (
 		<form
@@ -157,11 +175,11 @@ export const FormSection = ({
 				</div>
 				<p
 					className={`${
-						img ? "text-red-600" : "text-[#757199]"
+						validation.img ? "text-red-600" : "text-[#757199]"
 					} text-[13px] lg:text-sm mt-2 flex items-center space-x-1`}>
 					<iconify-icon icon="fluent:info-16-regular"></iconify-icon>
 					<span>
-						{img
+						{validation.img
 							? "Please upload a photo under 500KB."
 							: "Upload your photo (JPG or PNG, max size: 500KB)."}
 					</span>
@@ -184,9 +202,9 @@ export const FormSection = ({
 
 				<p
 					className={`${
-						name ? "text-red-600" : "text-[#757199]"
+						validation.name ? "text-red-600" : "text-[#757199]"
 					} text-[13px] lg:text-sm mt-2 flex items-center space-x-1`}>
-					{name ? (
+					{validation.name ? (
 						<>
 							<iconify-icon icon="fluent:info-16-regular"></iconify-icon>
 							<span>Please enter a valid name.</span>
@@ -210,9 +228,9 @@ export const FormSection = ({
 
 				<p
 					className={`${
-						email ? "text-red-600" : "text-[#757199]"
+						validation.email ? "text-red-600" : "text-[#757199]"
 					} text-[13px] lg:text-sm mt-2 flex items-center space-x-1`}>
-					{email ? (
+					{validation.email ? (
 						<>
 							<iconify-icon icon="fluent:info-16-regular"></iconify-icon>
 							<span>Please enter a valid email address.</span>
@@ -236,9 +254,9 @@ export const FormSection = ({
 				/>
 				<p
 					className={`${
-						username ? "text-red-600" : "text-[#757199]"
+						validation.username ? "text-red-600" : "text-[#757199]"
 					} text-[13px] lg:text-sm mt-2 flex items-center space-x-1`}>
-					{username ? (
+					{validation.username ? (
 						<>
 							<iconify-icon icon="fluent:info-16-regular"></iconify-icon>
 							<span>Please enter a valid username.</span>
