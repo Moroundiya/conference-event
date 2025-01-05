@@ -20,73 +20,68 @@ export const FormSection = ({
 		let emailInfo = data.get("email");
 		// console.log(data.get("image"));
 
-		// if (data) {
+		// // if (data) {
 		if (data.get("image").size / 1024 > 500 || data.get("image").name === "") {
-			// alert("Image size must not exceed 500KB");
-
-			setValidation({
-				...validation,
-				img: true,
-			});
-			// setImg(true);
-			// setEmail()
-			// return;
+			setImg(true);
 		} else {
-			// setImg(false);
-			setValidation({
-				...validation,
-				img: false,
-			});
-		}
-
-		if (!regex.test(emailInfo) || email === "") {
-			// console.log("Invalid Email");
-			// setEmail(true);
-			setValidation({
-				...validation,
-				email: true,
-			});
-			// return;
-		} else {
-			setValidation({
-				...validation,
-				email: false,
-			});
+			setImg(false);
 		}
 
 		if (data.get("name") === "") {
-			setValidation({
-				...validation,
-				name: true,
-			});
+			setName(true);
 		} else {
-			setValidation({
-				...validation,
-				name: false,
-			});
+			setName(false);
+		}
+
+		if (!regex.test(emailInfo) || emailInfo === "") {
+			setEmail(true);
+		} else {
+			setEmail(false);
 		}
 
 		if (data.get("username") === "") {
-			setValidation({
-				...validation,
-				username: true,
-			});
+			setUsername(true);
 		} else {
-			setValidation({
-				...validation,
-				username: false,
-			});
+			setUsername(false);
 		}
 
+		// if (!regex.test(emailInfo) || email === "") {
+		// 	setValidation({
+		// 		...validation,
+		// 		email: true,
+		// 	});
+		// 	// return;
+		// }
+
+		// else {
+		// 	setValidation({
+		// 		...validation,
+		// 		email: false,
+		// 	});
+		// }
+
+		// else {
+		// 	setValidation({
+		// 		...validation,
+		// 		name: false,
+		// 	});
+		// }
+
+		// } else {
+		// 	setValidation({
+		// 		...validation,
+		// 		username: false,
+		// 	});
+		// }
 	};
 
 	const [validation, setValidation] = useState({
-		name: false,
 		img: false,
+		name: false,
+		email: false,
 		username: false,
 		details: "",
 		submit: false,
-		email: false,
 	});
 
 	const [value, setValue] = useState("");
@@ -95,54 +90,83 @@ export const FormSection = ({
 	const [name, setName] = useState(false);
 	const [username, setUsername] = useState(false);
 	const [submit, setSubmit] = useState(false);
+
 	useEffect(() => {
-		// console.log("img is " + img);
-		// console.log("name is " + name);
-		// console.log("email is " + email);
-		// console.log("username is " + username);
+		// console.log(details);
+
+		// if (data) {
+		// if (details["image"].size / 1024 > 500 || details.image.name === "") {
+		// 	// alert("Image size must not exceed 500KB");
+
+		setValidation({
+			img,
+			name,
+			email,
+			username,
+		});
+
 		console.dir(validation);
 
-		const CheckForm = () => {
-			return username || email || img || name;
-		};
+		// if (!regex.test(emailInfo) || emailInfo === "") {
+		// 	// if (!regex.test(emailInfo) || email === "") {
+		// 	setValidation({
+		// 		...validation,
+		// 		email: true,
+		// 	});
+		// }
 
-		if (CheckForm()) {
-			// alert("Successful");
-			return;
-		} else {
-			// 	setFormInfo({
-			// 	image: URL.createObjectURL(data.get("image")),
-			// 	name: data.get("name"),
-			// 	email: data.get("email"),
-			// 	username: data.get("username"),
-			// });
-			if (submit) {
-				setTimeout(() => {
-					alert("Successful");
-					console.log(details);
-					setGenerateTicket(true);
-				}, 500);
-			}
-		}
+		// if (data.get("name") === "") {
+		// 	setValidation({
+		// 		...validation,
+		// 		name: true,
+		// 	});
+		// 	// console.log("Invalid name");
+		// }
+
+		// const CheckForm = () => {
+		// 	return (
+		// 		validation.username ||
+		// 		validation.email ||
+		// 		validation.img ||
+		// 		validation.name
+		// 	);
+		// };
+
+		// if (CheckForm()) {
+		// 	// alert("Successful");
+		// 	return;
+		// } else {
+		// 	// 	setFormInfo({
+		// 	// 	image: URL.createObjectURL(data.get("image")),
+		// 	// 	name: data.get("name"),
+		// 	// 	email: data.get("email"),
+		// 	// 	username: data.get("username"),
+		// 	// });
+		// 	if (submit) {
+		// 		setTimeout(() => {
+		// 			alert("Successful");
+		// 			console.log(details);
+		// 			setGenerateTicket(true);
+		// 		}, 500);
+		// 	}
+		// }
 
 		// console.log("details is " + details);
 	}, [
 		value,
-		email,
-		img,
-		name,
-		username,
 		details,
 		submit,
 		generateTicket,
 		validation,
+		email,
+		name,
+		username,
+		img,
 	]);
 
 	return (
 		<form
-			onSubmit={(e) => {
-				handleGenerateTicket(e), setSubmit(true);
-			}}
+			onSubmit={handleGenerateTicket}
 			className="w-full md:w-3/5 xl:w-2/6 my-14 space-y-7 lg:space-y-5">
 			<div>
 				<label
