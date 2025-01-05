@@ -10,11 +10,13 @@ export const FormSection = ({ setGenerateTicket, setFormInfo }) => {
 	const handleGenerateTicket = (e) => {
 		e.preventDefault();
 		let data = new FormData(e.target);
+		setDetails(data);
 		const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-		let email = data.get("email");
+		let emailInfo = data.get("email");
+		console.log(data.get("image"));
 
 		// if (data) {
-		if (data.get("image").size / 1024 > 500) {
+		if (data.get("image").size / 1024 > 500 || data.get("image").name === "") {
 			// alert("Image size must not exceed 500KB");
 			setImg(true);
 			// setEmail()
@@ -23,28 +25,75 @@ export const FormSection = ({ setGenerateTicket, setFormInfo }) => {
 			setImg(false);
 		}
 
-		if (!regex.test(email) || email === "") {
-			console.log("Invalid Email");
+		if (!regex.test(emailInfo) || email === "") {
+			// console.log("Invalid Email");
 			setEmail(true);
 			// return;
 		} else {
 			setEmail(false);
 		}
 
+		if (data.get("name") === "") {
+			setName(true);
+		} else {
+			setName(false);
+		}
+
+		if (data.get("username") === "") {
+			setUsername(true);
+		} else {
+			setUsername(false);
+		}
+
+		// return;
+
+		// console.log("CHeckForm is " + CheckForm());
+
+		// if (username || name || email || img) {
+		// 	alert("Incorrect");
+		// } else {
+		// 	alert("Correct");
+		// }
 		// console.log('Correct')
-		setFormInfo({
-			image: URL.createObjectURL(data.get("image")),
-			name: data.get("name"),
-			email: data.get("email"),
-			username: data.get("username"),
-		});
-		setGenerateTicket(true);
+
+		// if (!email && !img) {
+		// 	setFormInfo({
+		// 		image: URL.createObjectURL(data.get("image")),
+		// 		name: data.get("name"),
+		// 		email: data.get("email"),
+		// 		username: data.get("username"),
+		// 	});
+		// 	setGenerateTicket(true);
+		// } else {
+		// 	return;
+		// }
 	};
 
 	const [value, setValue] = useState("");
 	const [email, setEmail] = useState(false);
 	const [img, setImg] = useState(false);
-	useEffect(() => {}, [value]);
+	const [name, setName] = useState(false);
+	const [username, setUsername] = useState(false);
+	const [details, setDetails] = useState("");
+	useEffect(() => {
+		console.log("img is " + img);
+		console.log("name is " + name);
+		console.log("email is " + email);
+		console.log("username is " + username);
+
+		const CheckForm = () => {
+			return username || email || img || name;
+		};
+
+		if (CheckForm()) {
+			// alert("Successful");
+			return;
+		} else {
+			alert("Successful");
+		}
+
+		console.log("details is " + details);
+	}, [value, email, img, name, username, details]);
 
 	return (
 		<form
@@ -63,7 +112,7 @@ export const FormSection = ({ setGenerateTicket, setFormInfo }) => {
 						name="image"
 						accept="image/*"
 						onChange={(e) => setValue(e.target.value)}
-						required
+						// required
 					/>
 
 					<div className="bg-[#332E50] rounded-lg border border-[#7571999c] p-2">
@@ -86,7 +135,7 @@ export const FormSection = ({ setGenerateTicket, setFormInfo }) => {
 					<iconify-icon icon="fluent:info-16-regular"></iconify-icon>
 					<span>
 						{img
-							? "File too large, please upload a photo under 500KB."
+							? "Please upload a photo under 500KB."
 							: "Upload your photo (JPG or PNG, max size: 500KB)."}
 					</span>
 				</p>
@@ -103,8 +152,20 @@ export const FormSection = ({ setGenerateTicket, setFormInfo }) => {
 					placeholder="Adewunmi Quadri"
 					name="name"
 					className="w-full py-2.5 px-2 text-white outline-none rounded-lg mt-2 border border-double border-[#757199] bg-[#1b163e8e] focus:bg-[#1b163e8e] focus-within:bg-[#1b163e8e]"
-					required
+					// required
 				/>
+
+				<p
+					className={`${
+						name ? "text-red-600" : "text-[#757199]"
+					} text-[13px] lg:text-sm mt-2 flex items-center space-x-1`}>
+					{name ? (
+						<>
+							<iconify-icon icon="fluent:info-16-regular"></iconify-icon>
+							<span>Please enter a valid name.</span>
+						</>
+					) : null}
+				</p>
 			</div>
 
 			<div>
@@ -144,8 +205,19 @@ export const FormSection = ({ setGenerateTicket, setFormInfo }) => {
 					placeholder="@yourusername"
 					name="username"
 					className="w-full py-2.5 px-2 text-white outline-none rounded-lg my-2 border border-double border-[#757199] bg-[#1b163e8e] flex flex-col justify-center items-center focus:bg-[#1b163e8e] focus-within:bg-[#1b163e8e]"
-					required
+					// required
 				/>
+				<p
+					className={`${
+						username ? "text-red-600" : "text-[#757199]"
+					} text-[13px] lg:text-sm mt-2 flex items-center space-x-1`}>
+					{username ? (
+						<>
+							<iconify-icon icon="fluent:info-16-regular"></iconify-icon>
+							<span>Please enter a valid username.</span>
+						</>
+					) : null}
+				</p>
 			</div>
 
 			<button
