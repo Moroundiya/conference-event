@@ -3,7 +3,7 @@ import logo from "../images/logo-full.svg";
 import avatar from "../images/image-avatar.jpg";
 import github from "../images/icon-github.svg";
 // eslint-disable-next-line react/prop-types
-export const Ticket = ({ setGenerateTicket, formInfo }) => {
+export const Ticket = ({ setGenerateTicket, details }) => {
 	// eslint-disable-next-line react/prop-types
 	// console.log(formInfo.name);
 	return (
@@ -16,7 +16,7 @@ export const Ticket = ({ setGenerateTicket, formInfo }) => {
 						alt=""
 					/>
 					<p className="font-bold text-[#757199] uppercase rotate-90 text-lg absolute -right-3 lg:right-0">
-						#{formInfo.name}
+						#{details.name}
 					</p>
 
 					<div className="relative top-0 left-0 z-10 space-y-7">
@@ -32,13 +32,13 @@ export const Ticket = ({ setGenerateTicket, formInfo }) => {
 						</div>
 						<div className="flex space-x-4 lg:space-x-5 items-center">
 							<img
-								src={formInfo.image}
+								src={URL.createObjectURL(details.image)}
 								alt=""
 								className="w-12 h-12 lg:w-14 lg:h-14 rounded-lg"
 							/>
 							<div className="">
 								<p className="text-white text-xl lg:text-2xl font-bold ">
-									{formInfo.name}
+									{details.name}
 								</p>
 								<p className="flex items-center">
 									<img
@@ -46,7 +46,7 @@ export const Ticket = ({ setGenerateTicket, formInfo }) => {
 										alt=""
 									/>
 									<p className="text-[#757199] font-bold text-sm lg:text-lg">
-										{formInfo.username}
+										{details.username}
 									</p>
 								</p>
 							</div>

@@ -11,6 +11,7 @@ import { Ticket } from "./assets/components/Ticket";
 
 function App() {
 	const [generateTicket, setGenerateTicket] = useState(false);
+	const [details, setDetails] = useState("");
 	const [formInfo, setFormInfo] = useState({
 		image: "",
 		name: "",
@@ -19,7 +20,7 @@ function App() {
 	});
 	useEffect(() => {
 		// console.log(formInfo);
-	}, [generateTicket, formInfo]);
+	}, [generateTicket, formInfo, details]);
 
 	return (
 		<div className="w-full min-h-full bg-desktop-bg bg-cover bg-no-repeat bg-center relative">
@@ -58,7 +59,7 @@ function App() {
 								<span>
 									Congrats,{" "}
 									<span className="gradient-text uppercase">
-										{formInfo.name}{" "}
+										{details.name}{" "}
 									</span>
 								</span>
 								<span> Your ticket is ready!</span>
@@ -66,13 +67,15 @@ function App() {
 							<p className="text-[#757199] text-center text-lg lg:text-2xl mt-5 lg:w-2/4">
 								We&apos;ve emailed your ticket to{" "}
 								<span className="gradient-text lowercase">
-									{formInfo.email}{" "}
+									{details.email}{" "}
 								</span>
 								and will send updates in the run up to the event.
 							</p>
 							<Ticket
 								setGenerateTicket={setGenerateTicket}
 								formInfo={formInfo}
+								setDetails={setDetails}
+								details={details}
 							/>
 						</>
 					) : (
@@ -87,6 +90,9 @@ function App() {
 							<FormSection
 								setGenerateTicket={setGenerateTicket}
 								setFormInfo={setFormInfo}
+								setDetails={setDetails}
+									details={details}
+									generateTicket={generateTicket}
 							/>
 						</>
 					)}

@@ -6,11 +6,16 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 // eslint-disable-next-line react/prop-types
-export const FormSection = ({ setGenerateTicket, setFormInfo }) => {
+export const FormSection = ({
+	setGenerateTicket,
+	generateTicket,
+	setDetails,
+	details,
+}) => {
 	const handleGenerateTicket = (e) => {
 		e.preventDefault();
 		let data = new FormData(e.target);
-		setDetails(data);
+		setDetails(Object.fromEntries(data.entries()));
 		const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 		let emailInfo = data.get("email");
 		// console.log(data.get("image"));
@@ -63,23 +68,31 @@ export const FormSection = ({ setGenerateTicket, setFormInfo }) => {
 		// 		email: data.get("email"),
 		// 		username: data.get("username"),
 		// 	});
-		// 	setGenerateTicket(true);
 		// } else {
 		// 	return;
 		// }
 	};
+
+	const [validation, setValidation] = useState({
+		name: false,
+		img: false,
+		username: false,
+		details: "",
+		submit: false,
+	});
 
 	const [value, setValue] = useState("");
 	const [email, setEmail] = useState(false);
 	const [img, setImg] = useState(false);
 	const [name, setName] = useState(false);
 	const [username, setUsername] = useState(false);
-	const [details, setDetails] = useState("");
+	const [submit, setSubmit] = useState(false);
 	useEffect(() => {
-		console.log("img is " + img);
-		console.log("name is " + name);
-		console.log("email is " + email);
-		console.log("username is " + username);
+		// console.log("img is " + img);
+		// console.log("name is " + name);
+		// console.log("email is " + email);
+		// console.log("username is " + username);
+		console.log("submit is " + submit);
 
 		const CheckForm = () => {
 			return username || email || img || name;
@@ -89,17 +102,29 @@ export const FormSection = ({ setGenerateTicket, setFormInfo }) => {
 			// alert("Successful");
 			return;
 		} else {
-			setTimeout(() => {
-				alert("Successful");
-			}, 500);
+			// 	setFormInfo({
+			// 	image: URL.createObjectURL(data.get("image")),
+			// 	name: data.get("name"),
+			// 	email: data.get("email"),
+			// 	username: data.get("username"),
+			// });
+			if (submit) {
+				setTimeout(() => {
+					alert("Successful");
+					console.log(details);
+					setGenerateTicket(true);
+				}, 500);
+			}
 		}
 
 		// console.log("details is " + details);
-	}, [value, email, img, name, username, details]);
+	}, [value, email, img, name, username, details, submit, generateTicket, validation]);
 
 	return (
 		<form
-			onSubmit={handleGenerateTicket}
+			onSubmit={(e) => {
+				handleGenerateTicket(e), setSubmit(true);
+			}}
 			className="w-full md:w-3/5 xl:w-2/6 my-14 space-y-7 lg:space-y-5">
 			<div>
 				<label
