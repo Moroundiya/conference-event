@@ -10,22 +10,40 @@ export const FormSection = ({ setGenerateTicket, setFormInfo }) => {
 	const handleGenerateTicket = (e) => {
 		e.preventDefault();
 		let data = new FormData(e.target);
+		const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+		let email = data.get("email");
+
+		// if (data) {
 		if (data.get("image").size / 1024 > 500) {
-			alert("Image size must not exceed 500KB");
-			return;
+			// alert("Image size must not exceed 500KB");
+			setImg(true);
+			// setEmail()
+			// return;
+		} else {
+			setImg(false);
 		}
 
+		if (!regex.test(email) || email === "") {
+			console.log("Invalid Email");
+			setEmail(true);
+			// return;
+		} else {
+			setEmail(false);
+		}
+
+		// console.log('Correct')
 		setFormInfo({
 			image: URL.createObjectURL(data.get("image")),
 			name: data.get("name"),
 			email: data.get("email"),
 			username: data.get("username"),
 		});
-
 		setGenerateTicket(true);
 	};
 
 	const [value, setValue] = useState("");
+	const [email, setEmail] = useState(false);
+	const [img, setImg] = useState(false);
 	useEffect(() => {}, [value]);
 
 	return (
@@ -61,12 +79,16 @@ export const FormSection = ({ setGenerateTicket, setFormInfo }) => {
 						</span>
 					</p>
 				</div>
-				<p className="text-[#757199] text-[13px] lg:text-sm mt-2 flex items-center space-x-1">
-					<img
-						src={infoIcon}
-						alt=""
-					/>
-					<span>Upload your photo (JPG or PNG, max size: 500KB).</span>
+				<p
+					className={`${
+						img ? "text-red-600" : "text-[#757199]"
+					} text-[13px] lg:text-sm mt-2 flex items-center space-x-1`}>
+					<iconify-icon icon="fluent:info-16-regular"></iconify-icon>
+					<span>
+						{img
+							? "File too large, please upload a photo under 500KB."
+							: "Upload your photo (JPG or PNG, max size: 500KB)."}
+					</span>
 				</p>
 			</div>
 
@@ -84,6 +106,7 @@ export const FormSection = ({ setGenerateTicket, setFormInfo }) => {
 					required
 				/>
 			</div>
+
 			<div>
 				<label
 					htmlFor="email"
@@ -91,13 +114,25 @@ export const FormSection = ({ setGenerateTicket, setFormInfo }) => {
 					Email Address
 				</label>
 				<input
-					type="email"
+					type="text"
 					placeholder="example@email.com"
 					name="email"
 					className="w-full py-2.5 px-2 text-white outline-none rounded-lg mt-2 border border-double border-[#757199] bg-[#1b163e8e] focus:bg-[#1b163e8e] focus-within:bg-[#1b163e8e]"
-					required
 				/>
+
+				<p
+					className={`${
+						email ? "text-red-600" : "text-[#757199]"
+					} text-[13px] lg:text-sm mt-2 flex items-center space-x-1`}>
+					{email ? (
+						<>
+							<iconify-icon icon="fluent:info-16-regular"></iconify-icon>
+							<span>Please enter a valid email address.</span>
+						</>
+					) : null}
+				</p>
 			</div>
+
 			<div>
 				<label
 					htmlFor="username"
