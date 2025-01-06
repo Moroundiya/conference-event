@@ -4,7 +4,13 @@ import avatar from "../images/image-avatar.jpg";
 import github from "../images/icon-github.svg";
 import { useEffect, useState } from "react";
 // eslint-disable-next-line react/prop-types
-export const Ticket = ({ setGenerateTicket, details }) => {
+export const Ticket = ({
+	setGenerateTicket,
+	details,
+	generateTicket,
+	setSubmit,
+	submit,
+}) => {
 	// eslint-disable-next-line react/prop-types
 	// console.log(formInfo.name);
 
@@ -14,7 +20,7 @@ export const Ticket = ({ setGenerateTicket, details }) => {
 		setTimeout(() => {
 			setLoading(true);
 		}, 2000);
-	}, [loading]);
+	}, [loading, generateTicket, submit]);
 
 	return (
 		<>
@@ -64,10 +70,11 @@ export const Ticket = ({ setGenerateTicket, details }) => {
 							</div>
 						</div>
 					</div>
-					<button
-						type="email"
+					<button type="button"
 						placeholder="example@email.com"
-						onClick={() => setGenerateTicket(false)}
+						onClick={() => {
+							setGenerateTicket(false), setSubmit(false);
+						}}
 						className="w-full py-3 px-2 text-[#04011B] capitalize outline-none rounded-lg text-lg font-bold border-double bg-[#F67464]">
 						Book another ticket
 					</button>

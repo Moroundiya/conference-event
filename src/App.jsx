@@ -12,6 +12,7 @@ import { Ticket } from "./assets/components/Ticket";
 function App() {
 	const [generateTicket, setGenerateTicket] = useState(false);
 	const [details, setDetails] = useState("");
+	const [submit, setSubmit] = useState(false);
 	const [formInfo, setFormInfo] = useState({
 		image: "",
 		name: "",
@@ -20,14 +21,15 @@ function App() {
 	});
 	useEffect(() => {
 		// console.log(formInfo);
-	}, [generateTicket, formInfo, details]);
+		console.log(generateTicket);
+	}, [generateTicket, formInfo, details, submit]);
 
 	return (
 		<>
 			<div className="w-full min-h-full bg-desktop-bg bg-cover bg-no-repeat bg-center relative">
-				<p className="text-white absolute bottom-4 opacity-25 ">
-					Designed by Moroundiya 😎
-				</p>
+				<div className="absolute flex justify-center items-center flex-col w-full bottom-4 ">
+					<p className="text-white opacity-25 ">Designed by Moroundiya 😎</p>
+				</div>
 				<div
 					className="w-full min-h-full px-4 bg-center bg-cover bg-no-repeat relative py-12 flex items-center flex-col"
 					style={{ backgroundImage: `url(${patternLines})` }}>
@@ -77,6 +79,8 @@ function App() {
 									formInfo={formInfo}
 									setDetails={setDetails}
 									details={details}
+									generateTicket={generateTicket}
+									setSubmit={setSubmit}
 								/>
 							</>
 						) : (
@@ -95,6 +99,8 @@ function App() {
 									setDetails={setDetails}
 									details={details}
 									generateTicket={generateTicket}
+									submit={submit}
+									setSubmit={setSubmit}
 								/>
 							</>
 						)}

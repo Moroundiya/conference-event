@@ -11,6 +11,7 @@ export const FormSection = ({
 	generateTicket,
 	setDetails,
 	details,
+	setSubmit, submit
 }) => {
 	const handleGenerateTicket = (e) => {
 		e.preventDefault();
@@ -44,45 +45,6 @@ export const FormSection = ({
 		} else {
 			setUsername(false);
 		}
-
-		// if (
-		// 	validation.name ||
-		// 	validation.email ||
-		// 	validation.username ||
-		// 	validation.img
-		// ) {
-		// 	return;
-		// } else {
-		// 	setCorrect(true);
-		// }
-		// if (!regex.test(emailInfo) || email === "") {
-		// 	setValidation({
-		// 		...validation,
-		// 		email: true,
-		// 	});
-		// 	// return;
-		// }
-
-		// else {
-		// 	setValidation({
-		// 		...validation,
-		// 		email: false,
-		// 	});
-		// }
-
-		// else {
-		// 	setValidation({
-		// 		...validation,
-		// 		name: false,
-		// 	});
-		// }
-
-		// } else {
-		// 	setValidation({
-		// 		...validation,
-		// 		username: false,
-		// 	});
-		// }
 	};
 
 	const [validation, setValidation] = useState({
@@ -99,77 +61,15 @@ export const FormSection = ({
 	const [img, setImg] = useState(false);
 	const [name, setName] = useState(false);
 	const [username, setUsername] = useState(false);
-	const [submit, setSubmit] = useState(false);
 	const [correct, setCorrect] = useState(false);
 
 	useEffect(() => {
-		// console.log(details);
-
-		// if (data) {
-		// if (details["image"].size / 1024 > 500 || details.image.name === "") {
-		// 	// alert("Image size must not exceed 500KB");
-
 		setValidation({
 			img,
 			name,
 			email,
 			username,
 		});
-
-		// console.dir(validation);
-
-		// if (correct) {
-		// 	alert("successful");
-		// 	// setTimeout(() => {
-		// 	// 	alert("Successful");
-		// 	// }, 500);
-		// }
-
-		// if (!regex.test(emailInfo) || emailInfo === "") {
-		// 	// if (!regex.test(emailInfo) || email === "") {
-		// 	setValidation({
-		// 		...validation,
-		// 		email: true,
-		// 	});
-		// }
-
-		// if (data.get("name") === "") {
-		// 	setValidation({
-		// 		...validation,
-		// 		name: true,
-		// 	});
-		// 	// console.log("Invalid name");
-		// }
-
-		// const CheckForm = () => {
-		// 	return (
-		// 		validation.username ||
-		// 		validation.email ||
-		// 		validation.img ||
-		// 		validation.name
-		// 	);
-		// };
-
-		// if (CheckForm()) {
-		// 	// alert("Successful");
-		// 	return;
-		// } else {
-		// 	// 	setFormInfo({
-		// 	// 	image: URL.createObjectURL(data.get("image")),
-		// 	// 	name: data.get("name"),
-		// 	// 	email: data.get("email"),
-		// 	// 	username: data.get("username"),
-		// 	// });
-		// 	if (submit) {
-		// 		setTimeout(() => {
-		// 			alert("Successful");
-		// 			console.log(details);
-		// 			setGenerateTicket(true);
-		// 		}, 500);
-		// 	}
-		// }
-
-		// console.log("details is " + details);
 	}, [
 		value,
 		details,
@@ -197,7 +97,7 @@ export const FormSection = ({
 			if (submit) {
 				setInterval(() => {
 					// alert("Successful");
-					setGenerateTicket(true)
+					setGenerateTicket(true);
 				}, 500);
 			}
 		}
