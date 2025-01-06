@@ -45,6 +45,16 @@ export const FormSection = ({
 			setUsername(false);
 		}
 
+		// if (
+		// 	validation.name ||
+		// 	validation.email ||
+		// 	validation.username ||
+		// 	validation.img
+		// ) {
+		// 	return;
+		// } else {
+		// 	setCorrect(true);
+		// }
 		// if (!regex.test(emailInfo) || email === "") {
 		// 	setValidation({
 		// 		...validation,
@@ -90,6 +100,7 @@ export const FormSection = ({
 	const [name, setName] = useState(false);
 	const [username, setUsername] = useState(false);
 	const [submit, setSubmit] = useState(false);
+	const [correct, setCorrect] = useState(false);
 
 	useEffect(() => {
 		// console.log(details);
@@ -105,7 +116,14 @@ export const FormSection = ({
 			username,
 		});
 
-		console.dir(validation);
+		// console.dir(validation);
+
+		// if (correct) {
+		// 	alert("successful");
+		// 	// setTimeout(() => {
+		// 	// 	alert("Successful");
+		// 	// }, 500);
+		// }
 
 		// if (!regex.test(emailInfo) || emailInfo === "") {
 		// 	// if (!regex.test(emailInfo) || email === "") {
@@ -157,16 +175,39 @@ export const FormSection = ({
 		details,
 		submit,
 		generateTicket,
-		validation,
+		// validation,
 		email,
 		name,
 		username,
 		img,
+		correct,
 	]);
+
+	useEffect(() => {
+		console.log(validation);
+
+		if (
+			validation.name ||
+			validation.email ||
+			validation.username ||
+			validation.img
+		) {
+			return;
+		} else {
+			if (submit) {
+				setInterval(() => {
+					// alert("Successful");
+					setGenerateTicket(true)
+				}, 500);
+			}
+		}
+	}, [validation]);
 
 	return (
 		<form
-			onSubmit={handleGenerateTicket}
+			onSubmit={(e) => {
+				handleGenerateTicket(e), setSubmit(true);
+			}}
 			className="w-full md:w-3/5 xl:w-2/6 my-14 space-y-7 lg:space-y-5">
 			<div>
 				<label
