@@ -11,17 +11,21 @@ export const Ticket = ({
 	setSubmit,
 	submit,
 }) => {
-	// eslint-disable-next-line react/prop-types
-	// console.log(formInfo.name);
-
 	const [loading, setLoading] = useState(false);
+	const date = new Date();
+	const today = {
+		weekday: "long",
+		year: "numeric",
+		month: "long",
+		day: "numeric",
+	};
+	const formattedDate = date.toLocaleDateString(undefined, today);
 
 	useEffect(() => {
 		setTimeout(() => {
 			setLoading(true);
 		}, 2000);
 	}, [loading, generateTicket, submit]);
-
 	return (
 		<>
 			{loading ? (
@@ -44,7 +48,7 @@ export const Ticket = ({
 									className="w-[160px] lg:w-[180px]"
 								/>
 								<p className="text-[#757199] font-bold text-sm lg:text-lg ms-[37px]">
-									Jan 31, 2025 / Austin, TX
+									{formattedDate} / Austin, TX.
 								</p>
 							</div>
 							<div className="flex space-x-4 lg:space-x-5 items-center">
@@ -63,14 +67,15 @@ export const Ticket = ({
 											alt=""
 										/>
 										<p className="text-[#757199] font-bold text-sm lg:text-lg">
-											{details.username}
+											@{details.username}
 										</p>
 									</p>
 								</div>
 							</div>
 						</div>
 					</div>
-					<button type="button"
+					<button
+						type="button"
 						placeholder="example@email.com"
 						onClick={() => {
 							setGenerateTicket(false), setSubmit(false);
@@ -80,14 +85,14 @@ export const Ticket = ({
 					</button>
 				</div>
 			) : (
-				<div className="w-full h-[250px]  flex justify-center items-center">
+				<div className="w-full h-[250px]  flex justify-center items-center animate-pulse">
 					<div
 						role="status"
 						className=" w-full h-full flex flex-col justify-center items-center">
 						<div>
 							<svg
 								aria-hidden="true"
-								className="inline w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-purple-600"
+								className="inline w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-[#F57463]"
 								viewBox="0 0 100 101"
 								fill="none"
 								xmlns="http://www.w3.org/2000/svg">
