@@ -1,9 +1,9 @@
+/* eslint-disable react/prop-types */
 import ticketBox from "../images/pattern-ticket.png";
 import logo from "../images/logo-full.svg";
-import avatar from "../images/image-avatar.jpg";
+// import avatar from "../images/image-avatar.jpg";
 import github from "../images/icon-github.svg";
 import { useEffect, useState } from "react";
-// eslint-disable-next-line react/prop-types
 export const Ticket = ({
 	setGenerateTicket,
 	details,
@@ -20,7 +20,6 @@ export const Ticket = ({
 		day: "numeric",
 	};
 	const formattedDate = date.toLocaleDateString(undefined, today);
-
 	useEffect(() => {
 		setTimeout(() => {
 			setLoading(true);

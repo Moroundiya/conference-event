@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import uploadIcon from "../images/icon-upload.svg";
 import infoIcon from "../images/icon-info.svg";
@@ -5,7 +6,6 @@ import { Form } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 
-// eslint-disable-next-line react/prop-types
 export const FormSection = ({
 	setGenerateTicket,
 	generateTicket,
@@ -98,6 +98,7 @@ export const FormSection = ({
 				}, 500);
 			}
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [validation]);
 
 	return (
@@ -168,7 +169,7 @@ export const FormSection = ({
 				</label>
 				<input
 					type="text"
-					placeholder="Adewunmi Quadri"
+					placeholder="First Last"
 					name="name"
 					className="w-full py-2.5 px-2 text-white outline-none rounded-lg mt-2 border border-double border-[#757199] bg-[#1b163e8e] focus:bg-[#1b163e8e] focus-within:bg-[#1b163e8e]"
 					// required
