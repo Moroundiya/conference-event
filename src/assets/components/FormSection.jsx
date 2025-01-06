@@ -11,7 +11,8 @@ export const FormSection = ({
 	generateTicket,
 	setDetails,
 	details,
-	setSubmit, submit
+	setSubmit,
+	submit,
 }) => {
 	const handleGenerateTicket = (e) => {
 		e.preventDefault();
@@ -95,7 +96,7 @@ export const FormSection = ({
 			return;
 		} else {
 			if (submit) {
-				setInterval(() => {
+				setTimeout(() => {
 					// alert("Successful");
 					setGenerateTicket(true);
 				}, 500);
