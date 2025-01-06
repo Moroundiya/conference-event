@@ -63,6 +63,7 @@ export const FormSection = ({
 	const [name, setName] = useState(false);
 	const [username, setUsername] = useState(false);
 	const [correct, setCorrect] = useState(false);
+	const [imgPreview, setimgPreview] = useState(null);
 
 	useEffect(() => {
 		setValidation({
@@ -82,10 +83,13 @@ export const FormSection = ({
 		username,
 		img,
 		correct,
+		imgPreview,
 	]);
 
 	useEffect(() => {
 		console.log(validation);
+
+		console.log(details);
 
 		if (
 			validation.name ||
@@ -104,6 +108,18 @@ export const FormSection = ({
 		}
 	}, [validation]);
 
+	const handleImageChange = (event) => {
+		const file = event.target.files[0];
+		if (file) {
+			setImage(file);
+			const reader = new FileReader();
+			reader.onloadend = () => {
+				setPreview(reader.result);
+			};
+			reader.readAsDataURL(file);
+		}
+	};
+
 	return (
 		<form
 			onSubmit={(e) => {
@@ -116,22 +132,34 @@ export const FormSection = ({
 					className="text-lg lg:text-xl text-white">
 					Upload Avatar
 				</label>
-				<div className="w-full lg:h-[200px] py-8 relative rounded-xl mt-3 lg:mt-2 border-2 border-dashed cursor-pointer border-[#757199] bg-[#1b163e8e] flex flex-col justify-center items-center">
-					<input
-						type="file"
-						className="w-full h-full absolute top-0 left-0 z-10 opacity-0 cursor-pointer"
-						name="image"
-						accept="image/*"
-						onChange={(e) => setValue(e.target.value)}
-						// required
-					/>
-
-					<div className="bg-[#332E50] rounded-lg border border-[#7571999c] p-2">
-						<img
-							src={uploadIcon}
-							alt=""
-							className="lg:w-8"
+				<div className="w-full lg:h-[200px] py-8 relative rounded-xl mt-3 lg:mt-2 border-2 border-dashed border-[#757199] bg-[#1b163e8e] flex flex-col justify-center items-center">
+					<div className="bg-[#332E50] w-16 h-14 rounded-lg border border-[#7571999c] p-2 cursor-pointer relative flex justify-center items-center">
+						<input
+							type="file"
+							className="w-full h-full absolute top-0 left-0 z-10 opacity-0 cursor-pointer"
+							name="image"
+							accept="image/*"
+							onChange={(e) => {
+								setValue(e.target.value),
+									setimgPreview(URL.createObjectURL(e.target.files[0]));
+							}}
+							// required
 						/>
+						<img
+							src={imgPreview ? imgPreview : uploadIcon}
+							alt=""
+							className="w-full h-full"
+						/>
+
+						{imgPreview ? (
+							<p className="absolute w-full h-full pointer-events-none top-4 leading-tight text-white shadow-sm text-[10px] text-center">
+								Change <br /> Photo
+							</p>
+						) : (
+							<p className="absolute w-full h-full pointer-events-none top-4 left-0 leading-tight text-white shadow-sm text-[10px] text-center">
+								Upload <br /> Photo
+							</p>
+						)}
 					</div>
 					<p className="text-sm w-full px-4 text-center lg:w-3/4 h-auto overflow-hidden flex justify-center items-center lg:text-lg text-[#757199] mt-3">
 						<span className="w-full break-all break-words">
