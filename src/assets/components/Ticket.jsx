@@ -36,8 +36,8 @@ export const Ticket = ({
 							className="absolute top-0 left-0 h-full w-full"
 							alt=""
 						/>
-						<p className="font-bold text-[#757199] uppercase rotate-90 text-lg absolute -right-3 lg:right-0">
-							#{details.name}
+						<p className="font-bold text-[#757199] uppercase rotate-90 text-lg absolute right-3 lg:right-4">
+							#COPY
 						</p>
 
 						<div className="relative top-0 left-0 z-10 space-y-7">
