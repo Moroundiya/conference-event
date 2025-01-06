@@ -20,9 +20,7 @@ export const FormSection = ({
 		setDetails(Object.fromEntries(data.entries()));
 		const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 		let emailInfo = data.get("email");
-		// console.log(data.get("image"));
 
-		// // if (data) {
 		if (data.get("image").size / 1024 > 500 || data.get("image").name === "") {
 			setImg(true);
 		} else {
@@ -62,7 +60,6 @@ export const FormSection = ({
 	const [img, setImg] = useState(false);
 	const [name, setName] = useState(false);
 	const [username, setUsername] = useState(false);
-	const [correct, setCorrect] = useState(false);
 	const [imgPreview, setimgPreview] = useState(null);
 
 	useEffect(() => {
@@ -82,15 +79,10 @@ export const FormSection = ({
 		name,
 		username,
 		img,
-		correct,
 		imgPreview,
 	]);
 
 	useEffect(() => {
-		console.log(validation);
-
-		console.log(details);
-
 		if (
 			validation.name ||
 			validation.email ||
@@ -107,18 +99,6 @@ export const FormSection = ({
 			}
 		}
 	}, [validation]);
-
-	const handleImageChange = (event) => {
-		const file = event.target.files[0];
-		if (file) {
-			setImage(file);
-			const reader = new FileReader();
-			reader.onloadend = () => {
-				setPreview(reader.result);
-			};
-			reader.readAsDataURL(file);
-		}
-	};
 
 	return (
 		<form
@@ -268,8 +248,3 @@ export const FormSection = ({
 		</form>
 	);
 };
-
-// export const submitTicket = (request) => {
-// 	let data = request.FormData();
-// 	console.log(data);
-// };

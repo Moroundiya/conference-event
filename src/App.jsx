@@ -21,7 +21,6 @@ function App() {
 	});
 	useEffect(() => {
 		// console.log(formInfo);
-		console.log(generateTicket);
 	}, [generateTicket, formInfo, details, submit]);
 
 	return (
@@ -48,14 +47,12 @@ function App() {
 						alt=""
 						className="pointer-events-none absolute lg:right-[18%] top-[55%] w-40 lg:w-auto"
 					/>
-
 					<>
 						<img
 							src={logo}
 							alt=""
 							className="w-[180px] lg:auto"
 						/>
-
 						{generateTicket ? (
 							<>
 								<p className="pt-10 lg:pt-20 text-[1.52rem] lg:text-6xl text-white capitalize flex flex-col items-center font-bold ">
