@@ -74,7 +74,6 @@ export const FormSection = ({
 		details,
 		submit,
 		generateTicket,
-		// validation,
 		email,
 		name,
 		username,
