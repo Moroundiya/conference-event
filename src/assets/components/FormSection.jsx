@@ -92,7 +92,6 @@ export const FormSection = ({
 		} else {
 			if (submit) {
 				setTimeout(() => {
-					// alert("Successful");
 					setGenerateTicket(true);
 				}, 500);
 			}
