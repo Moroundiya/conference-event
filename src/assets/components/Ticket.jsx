@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import ticketBox from "../images/pattern-ticket.png";
 import logo from "../images/logo-full.svg";
-// import avatar from "../images/image-avatar.jpg";
 import github from "../images/icon-github.svg";
 import { useEffect, useState } from "react";
 export const Ticket = ({
