@@ -121,7 +121,6 @@ export const FormSection = ({
 								setValue(e.target.value),
 									setimgPreview(URL.createObjectURL(e.target.files[0]));
 							}}
-							// required
 						/>
 						<img
 							src={imgPreview ? imgPreview : uploadIcon}
