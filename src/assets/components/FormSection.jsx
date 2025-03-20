@@ -220,7 +220,6 @@ export const FormSection = ({
 					placeholder="yourusername"
 					name="username"
 					className="w-full py-2.5 px-2 text-white outline-none rounded-lg my-2 border border-double border-[#757199] bg-[#1b163e8e] flex flex-col justify-center items-center focus:bg-[#1b163e8e] focus-within:bg-[#1b163e8e]"
-					// required
 				/>
 				<p
 					className={`${
