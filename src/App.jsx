@@ -5,7 +5,6 @@ import patternCircle from "./assets/images/pattern-circle.svg";
 import lineBottom from "./assets/images/pattern-squiggly-line-bottom.svg";
 import logo from "./assets/images/logo-full.svg";
 import { useEffect, useState } from "react";
-// FormSection
 import { FormSection } from "./assets/components/FormSection";
 import { Ticket } from "./assets/components/Ticket";
 
