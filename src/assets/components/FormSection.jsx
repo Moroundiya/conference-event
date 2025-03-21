@@ -156,7 +156,6 @@ export const FormSection = ({
 					</span>
 				</p>
 			</div>
-
 			<div>
 				<label
 					htmlFor="name"
