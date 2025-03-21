@@ -19,7 +19,6 @@ function App() {
 		username: "",
 	});
 	useEffect(() => {
-		// console.log(formInfo);
 	}, [generateTicket, formInfo, details, submit]);
 
 	return (
