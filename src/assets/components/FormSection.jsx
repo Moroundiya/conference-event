@@ -181,7 +181,6 @@ export const FormSection = ({
 					) : null}
 				</p>
 			</div>
-
 			<div>
 				<label
 					htmlFor="email"
