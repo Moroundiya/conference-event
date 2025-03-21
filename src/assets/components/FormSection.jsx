@@ -193,7 +193,6 @@ export const FormSection = ({
 					name="email"
 					className="w-full py-2.5 px-2 text-white outline-none rounded-lg mt-2 border border-double border-[#757199] bg-[#1b163e8e] focus:bg-[#1b163e8e] focus-within:bg-[#1b163e8e]"
 				/>
-
 				<p
 					className={`${
 						validation.email ? "text-red-600" : "text-[#757199]"
