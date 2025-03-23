@@ -229,7 +229,6 @@ export const FormSection = ({
 					) : null}
 				</p>
 			</div>
-
 			<button
 				type="submit"
 				placeholder="example@email.com"
