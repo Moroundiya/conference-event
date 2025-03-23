@@ -14,6 +14,7 @@ export const FormSection = ({
 	setSubmit,
 	submit,
 }) => {
+	
 	const handleGenerateTicket = (e) => {
 		e.preventDefault();
 		let data = new FormData(e.target);
