@@ -5,7 +5,6 @@ body {
 	height: 100%;
 	font-family: "Inconsolata", serif;
 }
-
 .gradient-text {
 	background-color: hsl(7, 86%, 67%);
 	background-image: linear-gradient(45deg, hsl(7, 86%, 67%), hsl(0, 0%, 100%));
