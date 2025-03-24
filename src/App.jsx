@@ -18,6 +18,7 @@ function App() {
 		email: "",
 		username: "",
 	});
+	
 	useEffect(() => {
 	}, [generateTicket, formInfo, details, submit]);
 
