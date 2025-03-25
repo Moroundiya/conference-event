@@ -14,7 +14,7 @@ export const FormSection = ({
 	setSubmit,
 	submit,
 }) => {
-	
+
 	const handleGenerateTicket = (e) => {
 		e.preventDefault();
 		let data = new FormData(e.target);
@@ -45,6 +45,7 @@ export const FormSection = ({
 		} else {
 			setUsername(false);
 		}
+		
 	};
 
 	const [validation, setValidation] = useState({
